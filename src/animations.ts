@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
 export let slide=trigger('slide',[
     transition(':enter',[
@@ -6,7 +6,18 @@ export let slide=trigger('slide',[
         animate(500)
     ]),
     transition(':leave',[
-        animate('0.5s cubic-bezier(.17,.67,.93,.38)',style({transform:'translateX(-100%)'}))
+        animate('0.5s cubic-bezier(.17,.67,.93,.38)',keyframes([
+            style({
+                offset:.2,
+                opacity: 1,
+                transform: 'translateX(20px)'
+            }),
+            style({
+                offset:1,
+                opacity: 0,
+                transform: 'translateX(-100%)'
+            })
+        ]))
     ])
 ])
 
@@ -15,6 +26,4 @@ export let fade= trigger('fade',[
       transition(':enter,:leave',[
        animate(2000)
       ])
-     
-      
     ])
