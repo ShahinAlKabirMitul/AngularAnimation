@@ -20,14 +20,20 @@ export let slide=trigger('slide',[
         style({transform:'translateX(-10px)'}),
         animate(500)
     ]),
-    transition(':leave',[
-        useAnimation(bounceOutLeftAnimation)
-    ])
+    transition(':leave', useAnimation(bounceOutLeftAnimation) )
+])
+
+export let fadeInAnimation=animation([
+    style({opacity:0}),
+    animate(2000)
 ])
 
 export let fade= trigger('fade',[
-      state('void',style({opacity:0})),
-      transition(':enter,:leave',[
-       animate(2000)
-      ])
+    
+      transition(':enter',[
+        useAnimation(fadeInAnimation)
+      ]),
+      transition(':leave',[
+        animate(2000,style({opacity:0}))
+       ])
     ])

@@ -1,4 +1,4 @@
-import { bounceOutLeftAnimation } from './../../animations';
+import { bounceOutLeftAnimation, fadeInAnimation } from './../../animations';
 
 
 import { animate, keyframes, state, style, transition, trigger, useAnimation } from '@angular/animations';
@@ -13,8 +13,12 @@ import { Component } from '@angular/core';
   animations:[
     trigger('todoAnimation',[
       transition(':enter',[
-        style({opacity:0}),
-        animate(2000)
+        useAnimation(fadeInAnimation,{
+          params:{
+            duration:'500ms'
+            
+          }
+        })
         
       ]),
       transition(':leave',[
