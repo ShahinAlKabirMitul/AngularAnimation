@@ -32,7 +32,7 @@ import { Component } from '@angular/core';
             animate(1000)
           ]),
           query('@todoAnimation',
-           stagger(2000,animateChild())
+           stagger(200,animateChild() )
         )
         ])
 
