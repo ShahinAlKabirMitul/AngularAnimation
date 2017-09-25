@@ -11,6 +11,7 @@ import {
     transition,
     trigger,
     useAnimation,
+    group,
 } from '@angular/animations';
 
 
@@ -23,11 +24,15 @@ import { Component } from '@angular/core';
   animations:[
     trigger('todosAnimation',[
       transition(':enter',[
-        query('h1',[
-          style({transform:'translateY(-20px)'}),
-          animate(1000)
-        ]),
-        query('@todoAnimation',animateChild())
+        group([
+          query('h1',[
+            style({transform:'translateY(-20px)'}),
+            animate(1000)
+          ]),
+          query('@todoAnimation',animateChild())
+        ])
+
+       
       ])
     ]),
     trigger('todoAnimation',[
