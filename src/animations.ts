@@ -25,14 +25,20 @@ export let slide=trigger('slide',[
 
 export let fadeInAnimation=animation([
     style({opacity:0}),
-    animate(2000)
-])
+    animate('{{duration}} {{easing}}')
+],{
+    params :{
+        duration:'2s',
+        easing:'ease-out'
+    }
+})
 
 export let fade= trigger('fade',[
     
-      transition(':enter',[
+      transition(':enter',
         useAnimation(fadeInAnimation)
-      ]),
+      ),
+
       transition(':leave',[
         animate(2000,style({opacity:0}))
        ])
