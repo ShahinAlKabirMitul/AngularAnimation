@@ -1,7 +1,17 @@
 import { bounceOutLeftAnimation, fadeInAnimation } from './../../animations';
 
 
-import { animate, keyframes, query, state, style, transition, trigger, useAnimation } from '@angular/animations';
+import {
+    animate,
+    animateChild,
+    keyframes,
+    query,
+    state,
+    style,
+    transition,
+    trigger,
+    useAnimation,
+} from '@angular/animations';
 
 
 import { Component } from '@angular/core';
@@ -16,14 +26,15 @@ import { Component } from '@angular/core';
         query('h1',[
           style({transform:'translateY(-20px)'}),
           animate(1000)
-        ])
+        ]),
+        query('@todoAnimation',animateChild())
       ])
     ]),
     trigger('todoAnimation',[
       transition(':enter',[
         useAnimation(fadeInAnimation,{
           params:{
-            duration:'500ms'
+            duration:'1000ms'
             
           }
         })
